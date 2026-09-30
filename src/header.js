@@ -61,9 +61,11 @@ window.onload = () => {
 
     let mynaviButtonHome =
       document.getElementsByClassName("mynavi-button-home")[0];
-    mynaviButtonHome.setAttribute("onclick", "window.location.href = 'home';");
-    mynaviButtonHome.innerHTML = "";
-    mynaviButtonHome.appendChild(mypage);
+    if (mynaviButtonHome) {
+      mynaviButtonHome.setAttribute("onclick", "window.location.href = 'home';");
+      mynaviButtonHome.innerHTML = "";
+      mynaviButtonHome.appendChild(mypage);
+    }
 
     let course = document.createElement("span");
     course.classList.add("mynavi-button-a");
@@ -72,12 +74,14 @@ window.onload = () => {
     let mynaviButtonCourse = document.getElementsByClassName(
       "mynavi-button-course"
     )[0];
-    mynaviButtonCourse.setAttribute(
-      "onclick",
-      "window.location.href = 'home_course';"
-    );
-    mynaviButtonCourse.innerHTML = "";
-    mynaviButtonCourse.appendChild(course);
+    if (mynaviButtonCourse) {
+      mynaviButtonCourse.setAttribute(
+        "onclick",
+        "window.location.href = 'home_course';"
+      );
+      mynaviButtonCourse.innerHTML = "";
+      mynaviButtonCourse.appendChild(course);
+    }
 
     let portfolio = document.createElement("span");
     portfolio.classList.add("mynavi-button-a");
@@ -86,12 +90,14 @@ window.onload = () => {
     let mynaviButtonPortfolio = document.getElementsByClassName(
       "mynavi-button-portfolio"
     )[0];
-    mynaviButtonPortfolio.setAttribute(
-      "onclick",
-      "window.location.href = 'home_coursetable';"
-    );
-    mynaviButtonPortfolio.innerHTML = "";
-    mynaviButtonPortfolio.appendChild(portfolio);
+    if (mynaviButtonPortfolio) {
+      mynaviButtonPortfolio.setAttribute(
+        "onclick",
+        "window.location.href = 'home_coursetable';"
+      );
+      mynaviButtonPortfolio.innerHTML = "";
+      mynaviButtonPortfolio.appendChild(portfolio);
+    }
 
     let unsubmitted = document.createElement("span");
     unsubmitted.classList.add("mynavi-button-a");
@@ -115,9 +121,11 @@ window.onload = () => {
     div2.appendChild(reminder);
 
     let mynavi = document.getElementById("mynavi");
-    mynavi.innerHTML += "";
-    mynavi.appendChild(div1);
-    mynavi.appendChild(div2);
+    if (mynavi) {
+      mynavi.innerHTML += "";
+      mynavi.appendChild(div1);
+      mynavi.appendChild(div2);
+    }
 
     let english = document.createElement("span");
     english.classList.add("mynavi-button-a");
@@ -150,11 +158,15 @@ window.onload = () => {
     responDiv.appendChild(respon);
 
     let mybuttonMenu = document.getElementById("mybutton-menu");
-    mybuttonMenu.innerHTML = "";
-    mybuttonMenu.appendChild(responDiv);
-    mybuttonMenu.appendChild(memoDiv);
+    if (mybuttonMenu) {
+      mybuttonMenu.innerHTML = "";
+      mybuttonMenu.appendChild(responDiv);
+      mybuttonMenu.appendChild(memoDiv);
+    }
 
-    document.getElementsByClassName("align")[0].remove();
+    if (document.getElementsByClassName("align")[0]) {
+      document.getElementsByClassName("align")[0].remove();
+    }
 
     // 言語によってどのボタンを割り当てるか決定
     if (document.getElementsByClassName("mylang-ja")[0]) {
@@ -162,23 +174,31 @@ window.onload = () => {
       mylangJa.innerHTML = "";
       mylangJa.setAttribute("onclick", "window.location.href = 'home_lang_en';");
       mylangJa.appendChild(english);
-    } else {
+    } else if (document.getElementsByClassName("mylang-en")[0]) {
       let mylangEn = document.getElementsByClassName("mylang-en")[0];
       mylangEn.innerHTML = "";
       mylangEn.setAttribute("onclick", "window.location.href = 'home_lang_ja';");
       mylangEn.appendChild(japanese);
       // ヘッダの表記を英語に変える
-      document.getElementsByClassName(
-        "mynavi-button-home"
-      )[0].childNodes[0].innerText = "My page";
-      document.getElementsByClassName(
-        "mynavi-button-course"
-      )[0].childNodes[0].innerText = "Courses";
-      document.getElementsByClassName(
-        "mynavi-button-portfolio"
-      )[0].childNodes[0].innerText = "Portfolio";
-      document.getElementsByClassName("memo-div")[0].childNodes[0].innerText =
-        "Memos";
+      if (document.getElementsByClassName("mynavi-button-home")[0]) {
+        document.getElementsByClassName(
+          "mynavi-button-home"
+        )[0].childNodes[0].innerText = "My page";
+      }
+      if (document.getElementsByClassName("mynavi-button-course")[0]) {
+        document.getElementsByClassName(
+          "mynavi-button-course"
+        )[0].childNodes[0].innerText = "Courses";
+      }
+      if (document.getElementsByClassName("mynavi-button-portfolio")[0]) {
+        document.getElementsByClassName(
+          "mynavi-button-portfolio"
+        )[0].childNodes[0].innerText = "Portfolio";
+      }
+      if (document.getElementsByClassName("memo-div")[0]) {
+        document.getElementsByClassName("memo-div")[0].childNodes[0].innerText =
+          "Memos";
+      }
       unsubmitted.innerHTML = "Assignments";
       reminder.innerHTML = "Reminders";
     }
@@ -214,146 +234,174 @@ window.onload = () => {
         // 小テスト
         let courseMenuQuery =
           document.getElementsByClassName("course-menu-query")[0];
-        let courseMenuQuerySpan = document.createElement("span");
-        const examCount = document.getElementById("examstatus");
-        courseMenuQuerySpan.innerHTML = "小テスト";
-        courseMenuQuerySpan.classList.add("course-menu-a");
-        courseMenuQuery.setAttribute(
-          "onclick",
-          "window.location.href = '" +
-          courseMenuQuery.getElementsByTagName("a")[0].getAttribute("href") +
-          "';"
-        );
-        courseMenuQuery.innerHTML = "";
-        courseMenuQuery.appendChild(courseMenuQuerySpan);
-        if (examCount !== null) courseMenuQuery.appendChild(examCount);
+        if (courseMenuQuery) {
+          let courseMenuQuerySpan = document.createElement("span");
+          const examCount = document.getElementById("examstatus");
+          courseMenuQuerySpan.innerHTML = "小テスト";
+          courseMenuQuerySpan.classList.add("course-menu-a");
+          courseMenuQuery.setAttribute(
+            "onclick",
+            "window.location.href = '" +
+            courseMenuQuery.getElementsByTagName("a")[0].getAttribute("href") +
+            "';"
+          );
+          courseMenuQuery.innerHTML = "";
+          courseMenuQuery.appendChild(courseMenuQuerySpan);
+          if (examCount !== null) courseMenuQuery.appendChild(examCount);
+        }
 
         // アンケート
         let courseMenuSurvey =
           document.getElementsByClassName("course-menu-survey")[0];
-        let courseMenuSurveySpan = document.createElement("span");
-        const surveyCount = document.getElementById("surveystatus");
-        courseMenuSurveySpan.innerHTML = "アンケート";
-        courseMenuSurveySpan.classList.add("course-menu-a");
-        courseMenuSurvey.setAttribute(
-          "onclick",
-          "window.location.href = '" +
-          courseMenuSurvey.getElementsByTagName("a")[0].getAttribute("href") +
-          "';"
-        );
-        courseMenuSurvey.innerHTML = "";
-        courseMenuSurvey.appendChild(courseMenuSurveySpan);
-        if (surveyCount !== null) courseMenuSurvey.appendChild(surveyCount);
+        if (courseMenuSurvey) {
+          let courseMenuSurveySpan = document.createElement("span");
+          const surveyCount = document.getElementById("surveystatus");
+          courseMenuSurveySpan.innerHTML = "アンケート";
+          courseMenuSurveySpan.classList.add("course-menu-a");
+          courseMenuSurvey.setAttribute(
+            "onclick",
+            "window.location.href = '" +
+            courseMenuSurvey.getElementsByTagName("a")[0].getAttribute("href") +
+            "';"
+          );
+          courseMenuSurvey.innerHTML = "";
+          courseMenuSurvey.appendChild(courseMenuSurveySpan);
+          if (surveyCount !== null) courseMenuSurvey.appendChild(surveyCount);
+        }
 
         // レポート
         let courseMenuReport =
           document.getElementsByClassName("course-menu-report")[0];
-        let courseMenuReportSpan = document.createElement("span");
-        const reportCount = document.getElementById("reportstatus");
-        courseMenuReportSpan.innerHTML = "レポート";
-        courseMenuReportSpan.classList.add("course-menu-a");
-        courseMenuReport.setAttribute(
-          "onclick",
-          "window.location.href = '" +
-          courseMenuReport.getElementsByTagName("a")[0].getAttribute("href") +
-          "';"
-        );
-        courseMenuReport.innerHTML = "";
-        courseMenuReport.appendChild(courseMenuReportSpan);
-        if (reportCount !== null) courseMenuReport.appendChild(reportCount);
+        if (courseMenuReport) {
+          let courseMenuReportSpan = document.createElement("span");
+          const reportCount = document.getElementById("reportstatus");
+          courseMenuReportSpan.innerHTML = "レポート";
+          courseMenuReportSpan.classList.add("course-menu-a");
+          courseMenuReport.setAttribute(
+            "onclick",
+            "window.location.href = '" +
+            courseMenuReport.getElementsByTagName("a")[0].getAttribute("href") +
+            "';"
+          );
+          courseMenuReport.innerHTML = "";
+          courseMenuReport.appendChild(courseMenuReportSpan);
+          if (reportCount !== null) courseMenuReport.appendChild(reportCount);
+        }
 
         // プロジェクト
         let courseMenuProject = document.getElementsByClassName(
           "course-menu-project"
         )[0];
-        let courseMenuProjectSpan = document.createElement("span");
-        const projectCount = document.getElementById("projectstatus");
-        courseMenuProjectSpan.innerHTML = "プロジェクト";
-        courseMenuProjectSpan.classList.add("course-menu-a");
-        courseMenuProject.setAttribute(
-          "onclick",
-          "window.location.href = '" +
-          courseMenuProject.getElementsByTagName("a")[0].getAttribute("href") +
-          "';"
-        );
-        courseMenuProject.innerHTML = "";
-        courseMenuProject.appendChild(courseMenuProjectSpan);
-        if (projectCount !== null) courseMenuProject.appendChild(projectCount);
+        if (courseMenuProject) {
+          let courseMenuProjectSpan = document.createElement("span");
+          const projectCount = document.getElementById("projectstatus");
+          courseMenuProjectSpan.innerHTML = "プロジェクト";
+          courseMenuProjectSpan.classList.add("course-menu-a");
+          courseMenuProject.setAttribute(
+            "onclick",
+            "window.location.href = '" +
+            courseMenuProject.getElementsByTagName("a")[0].getAttribute("href") +
+            "';"
+          );
+          courseMenuProject.innerHTML = "";
+          courseMenuProject.appendChild(courseMenuProjectSpan);
+          if (projectCount !== null) courseMenuProject.appendChild(projectCount);
+        }
 
         // 成績
         let courseMenuGrade =
           document.getElementsByClassName("course-menu-grade")[0];
-        let courseMenuGradeSpan = document.createElement("span");
-        const gradeCount = document.getElementById("gradestatus");
-        courseMenuGradeSpan.innerHTML = "成績";
-        courseMenuGradeSpan.classList.add("course-menu-a");
-        courseMenuGrade.setAttribute(
-          "onclick",
-          "window.location.href = '" +
-          courseMenuGrade.getElementsByTagName("a")[0].getAttribute("href") +
-          "';"
-        );
-        courseMenuGrade.innerHTML = "";
-        courseMenuGrade.appendChild(courseMenuGradeSpan);
-        if (gradeCount !== null) courseMenuGrade.appendChild(gradeCount);
+        if (courseMenuGrade) {
+          let courseMenuGradeSpan = document.createElement("span");
+          const gradeCount = document.getElementById("gradestatus");
+          courseMenuGradeSpan.innerHTML = "成績";
+          courseMenuGradeSpan.classList.add("course-menu-a");
+          courseMenuGrade.setAttribute(
+            "onclick",
+            "window.location.href = '" +
+            courseMenuGrade.getElementsByTagName("a")[0].getAttribute("href") +
+            "';"
+          );
+          courseMenuGrade.innerHTML = "";
+          courseMenuGrade.appendChild(courseMenuGradeSpan);
+          if (gradeCount !== null) courseMenuGrade.appendChild(gradeCount);
+        }
 
         // 掲示板
         let courseMenuBbs = document.getElementsByClassName("course-menu-bbs")[0];
-        let courseMenuBbsSpan = document.createElement("span");
-        courseMenuBbsSpan.innerHTML = "掲示板";
-        courseMenuBbsSpan.classList.add("course-menu-a");
-        courseMenuBbs.setAttribute(
-          "onclick",
-          "window.location.href = '" +
-          courseMenuBbs.getElementsByTagName("a")[0].getAttribute("href") +
-          "';"
-        );
-        courseMenuBbs.innerHTML = "";
-        courseMenuBbs.appendChild(courseMenuBbsSpan);
+        if (courseMenuBbs) {
+          let courseMenuBbsSpan = document.createElement("span");
+          courseMenuBbsSpan.innerHTML = "掲示板";
+          courseMenuBbsSpan.classList.add("course-menu-a");
+          courseMenuBbs.setAttribute(
+            "onclick",
+            "window.location.href = '" +
+            courseMenuBbs.getElementsByTagName("a")[0].getAttribute("href") +
+            "';"
+          );
+          courseMenuBbs.innerHTML = "";
+          courseMenuBbs.appendChild(courseMenuBbsSpan);
+        }
 
         // コースコンテンツ
         let courseMenuCourseContents = document.getElementsByClassName(
           "course-menu-coursecontents"
         )[0];
-        let courseMenuCourseContentsSpan = document.createElement("span");
-        courseMenuCourseContentsSpan.innerHTML = "コースコンテンツ";
-        courseMenuCourseContentsSpan.classList.add("course-menu-a");
-        courseMenuCourseContents.setAttribute(
-          "onclick",
-          "window.location.href = '" +
-          courseMenuCourseContents
-            .getElementsByTagName("a")[0]
-            .getAttribute("href") +
-          "';"
-        );
-        courseMenuCourseContents.innerHTML = "";
-        courseMenuCourseContents.appendChild(courseMenuCourseContentsSpan);
+        if (courseMenuCourseContents) {
+          let courseMenuCourseContentsSpan = document.createElement("span");
+          courseMenuCourseContentsSpan.innerHTML = "コースコンテンツ";
+          courseMenuCourseContentsSpan.classList.add("course-menu-a");
+          courseMenuCourseContents.setAttribute(
+            "onclick",
+            "window.location.href = '" +
+            courseMenuCourseContents
+              .getElementsByTagName("a")[0]
+              .getAttribute("href") +
+            "';"
+          );
+          courseMenuCourseContents.innerHTML = "";
+          courseMenuCourseContents.appendChild(courseMenuCourseContentsSpan);
+        }
       }
 
       // 言語が英語か確認
       if (document.getElementsByClassName("mylang-en")[0]) {
         // メニューの表記を英語に変える
-        document.getElementsByClassName(
-          "course-menu-query"
-        )[0].childNodes[0].innerText = "Tests";
-        document.getElementsByClassName(
-          "course-menu-survey"
-        )[0].childNodes[0].innerText = "Surveys";
-        document.getElementsByClassName(
-          "course-menu-report"
-        )[0].childNodes[0].innerText = "Assignments";
-        document.getElementsByClassName(
-          "course-menu-project"
-        )[0].childNodes[0].innerText = "Projects";
-        document.getElementsByClassName(
-          "course-menu-grade"
-        )[0].childNodes[0].innerText = "Grades";
-        document.getElementsByClassName(
-          "course-menu-bbs"
-        )[0].childNodes[0].innerText = "Forum";
-        document.getElementsByClassName(
-          "course-menu-coursecontents"
-        )[0].childNodes[0].innerText = "Resources";
+        if (document.getElementsByClassName("course-menu-query")[0]) {
+          document.getElementsByClassName(
+            "course-menu-query"
+          )[0].childNodes[0].innerText = "Tests";
+        }
+        if (document.getElementsByClassName("course-menu-survey")[0]) {
+          document.getElementsByClassName(
+            "course-menu-survey"
+          )[0].childNodes[0].innerText = "Surveys";
+        }
+        if (document.getElementsByClassName("course-menu-report")[0]) {
+          document.getElementsByClassName(
+            "course-menu-report"
+          )[0].childNodes[0].innerText = "Assignments";
+        }
+        if (document.getElementsByClassName("course-menu-project")[0]) {
+          document.getElementsByClassName(
+            "course-menu-project"
+          )[0].childNodes[0].innerText = "Projects";
+        }
+        if (document.getElementsByClassName("course-menu-grade")[0]) {
+          document.getElementsByClassName(
+            "course-menu-grade"
+          )[0].childNodes[0].innerText = "Grades";
+        }
+        if (document.getElementsByClassName("course-menu-bbs")[0]) {
+          document.getElementsByClassName(
+            "course-menu-bbs"
+          )[0].childNodes[0].innerText = "Forum";
+        }
+        if (document.getElementsByClassName("course-menu-coursecontents")[0]) {
+          document.getElementsByClassName(
+            "course-menu-coursecontents"
+          )[0].childNodes[0].innerText = "Resources";
+        }
       }
     }
 
@@ -373,43 +421,58 @@ window.onload = () => {
       // テーブルの背景色の変更を無効化する
       let styleSheets = document.styleSheets;
       let styleSheet = styleSheets[styleSheets.length - 1];
-      styleSheet.insertRule(
-        "table tr:nth-child(even) { background: transparent !important; }",
-        styleSheet.cssRules.length
-      );
-      styleSheet.insertRule(
-        "table tr:nth-child(odd) { background: transparent !important; }",
-        styleSheet.cssRules.length
-      );
+      if (styleSheet) {
+        styleSheet.insertRule(
+          "table tr:nth-child(even) { background: transparent !important; }",
+          styleSheet.cssRules.length
+        );
+        styleSheet.insertRule(
+          "table tr:nth-child(odd) { background: transparent !important; }",
+          styleSheet.cssRules.length
+        );
+      }
     }
 
     const menuBarBase = document.createElement("div");
     menuBarBase.id = "menu-base";
-    document
-      .getElementById("header")
-      .insertBefore(menuBarBase, document.getElementById("mynavi"));
+    if (document.getElementById("header")) {
+      document
+        .getElementById("header")
+        .insertBefore(menuBarBase, document.getElementById("mynavi"));
+    }
     menuBarBase.addEventListener("click", () => {
-      document.getElementById("mynavi").classList.remove("menu-open");
-      document.getElementById("menu-base").classList.remove("menu-base-open");
+      if (document.getElementById("mynavi")) {
+        document.getElementById("mynavi").classList.remove("menu-open");
+      }
+      if (document.getElementById("menu-base")) {
+        document.getElementById("menu-base").classList.remove("menu-base-open");
+      }
       menuBarBase.style.display = "none";
     });
 
     const mynavi2 = document.createElement("div");
     mynavi2.id = "mynavi2";
-    document
-      .getElementById("header")
-      .insertBefore(mynavi2, document.getElementById("mynavi"));
+    if (document.getElementById("header")) {
+      document
+        .getElementById("header")
+        .insertBefore(mynavi2, document.getElementById("mynavi"));
+    }
 
     const menuButton = document.createElement("button");
     menuButton.id = "menu-button";
     menuButton.addEventListener("click", () => {
-      if (document.getElementById("mynavi").classList.contains("menu-open")) {
-        document.getElementById("mynavi").classList.remove("menu-open");
-        document.getElementById("menu-base").classList.remove("menu-base-open");
+      const mynaviElem = document.getElementById("mynavi");
+      if (mynaviElem && mynaviElem.classList.contains("menu-open")) {
+        mynaviElem.classList.remove("menu-open");
+        if (document.getElementById("menu-base")) {
+          document.getElementById("menu-base").classList.remove("menu-base-open");
+        }
         menuBarBase.style.display = "none";
       } else {
-        document.getElementById("mynavi").classList.add("menu-open");
-        document.getElementById("menu-base").classList.add("menu-base-open");
+        if (mynaviElem) mynaviElem.classList.add("menu-open");
+        if (document.getElementById("menu-base")) {
+          document.getElementById("menu-base").classList.add("menu-base-open");
+        }
         menuBarBase.style.display = "block";
       }
     });
@@ -420,27 +483,28 @@ window.onload = () => {
     let isWide = window.innerWidth > 1024;
 
     document.body.onresize = (e) => {
+      const mynaviElem = document.getElementById("mynavi");
       if (window.innerWidth <= 1024 && isWide) {
-        document.getElementById("mynavi").appendChild(myButtonMenu);
-        document.getElementById("mynavi").appendChild(myLang);
+        if (mynaviElem && myButtonMenu) mynaviElem.appendChild(myButtonMenu);
+        if (mynaviElem && myLang) mynaviElem.appendChild(myLang);
         isWide = false;
       } else if (window.innerWidth > 1024 && !isWide) {
-        document
-          .getElementById("header")
-          .insertBefore(
-            document.getElementById("header-common-message"),
-            myButtonMenu
-          );
-        document
-          .getElementById("header")
-          .insertBefore(document.getElementById("header-common-message"), myLang);
+        const headerElem = document.getElementById("header");
+        const commonMsg = document.getElementById("header-common-message");
+        if (headerElem && commonMsg && myButtonMenu) {
+          headerElem.insertBefore(commonMsg, myButtonMenu);
+        }
+        if (headerElem && commonMsg && myLang) {
+          headerElem.insertBefore(commonMsg, myLang);
+        }
         isWide = true;
       }
     };
 
     if (!isWide) {
-      document.getElementById("mynavi").appendChild(myButtonMenu);
-      document.getElementById("mynavi").appendChild(myLang);
+      const mynaviElem = document.getElementById("mynavi");
+      if (mynaviElem && myButtonMenu) mynaviElem.appendChild(myButtonMenu);
+      if (mynaviElem && myLang) mynaviElem.appendChild(myLang);
     }
 
     // m-timetable 対応
@@ -448,7 +512,7 @@ window.onload = () => {
       const timetable = document.getElementById("m-timetable");
       if (timetable) {
         const after = document.querySelector(".my-infolist-centernews");
-        after.insertAdjacentElement("afterend", timetable);
+        if (after) after.insertAdjacentElement("afterend", timetable);
       }
     }, 200);
   } finally {
