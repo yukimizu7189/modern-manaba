@@ -17,12 +17,6 @@ const openSettings = () => {
 };
 
 window.onload = () => {
-  // オプションページから設定を読み込む
-  chrome.storage.sync.get(defaults, function (items) {
-    document.body.setAttribute("theme", "light");
-    if (items.darkmode) document.body.setAttribute("theme", "dark");
-  });
-
   // ヘッダー要素が存在しない画面（PDFポップアップやサブウィンドウ等）では処理をスキップ
   const headerElem = document.getElementById("header");
   const mynaviElem = document.getElementById("mynavi");
@@ -30,6 +24,14 @@ window.onload = () => {
     document.documentElement.style.visibility = "";
     return;
   }
+
+  // オプションページから設定を読み込む
+  chrome.storage.sync.get(defaults, function (items) {
+    if (document.body) {
+      document.body.setAttribute("theme", "light");
+      if (items.darkmode) document.body.setAttribute("theme", "dark");
+    }
+  });
 
   try {
     // オプションページへのリンクを挿入
