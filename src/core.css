@@ -162,7 +162,7 @@ input[type="button"]:hover,
   margin: 16px !important;
 }
 
-.alertlist {
+.alertlist:nth-child(2 of .alertlist) {
   padding: 12px !important;
   background: var(--color-card-background-alert) !important;
   border: var(--color-card-border-alert) solid 1px;
@@ -170,13 +170,14 @@ input[type="button"]:hover,
   margin: 0 16px 16px !important;
 }
 
-.alertlist a,
-.alertlist span.unread {
-  color: white !important;
+
+.alertlist:nth-child(2 of .alertlist) a,
+.alertlist:nth-child(2 of .alertlist) span.unread {
+  /* color: white !important; */
   font-weight: normal !important;
 }
 
-.alertlist div {
+.alertlist:nth-child(2 of .alertlist) div {
   margin: 0 20px 0 15px !important;
 }
 
